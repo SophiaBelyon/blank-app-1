@@ -4,5 +4,5 @@ Pandas
 Seaborn
 Matplotlib
 Graphviz
-Sklearn
+Scikit-learn
 Pickle

@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 # Load pre-trained model
-model = pickle.load(open("model.pkl", "rb"))
+model = pickle.load(open("dt_model.pkl", "rb"))
 label_encoders = pickle.load(open("label_encoders.pkl", "rb"))  # Encoders for categorical inputs
 
 st.set_page_config(page_title="Mushroom Classifier", layout="centered")
@@ -25,7 +25,7 @@ with col2:
     stalk_color_above_ring = st.selectbox("Stalk Color Above Ring", ['n', 'b', 'c', 'g', 'p', 'e', 'w', 'y'])
 
 # Prediction
-if st.button("🔍 Predict"):
+if st.button("Predict"):
     # Prepare input
     input_dict = {
         "cap-shape": cap_shape,
@@ -45,6 +45,6 @@ if st.button("🔍 Predict"):
 
     # Show Result
     if prediction == 'e':
-        st.success("✅ The mushroom is *Edible*.")
+        st.success("The mushroom is *Edible*.")
     else:
-        st.error("❌ The mushroom is *Poisonous*!")
+        st.error("The mushroom is *Poisonous*!")
