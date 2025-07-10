@@ -1,1 +1,8 @@
 streamlit
+NumPy
+Pandas
+Seaborn
+Matplotlib
+Graphviz
+Sklearn
+Pickle
