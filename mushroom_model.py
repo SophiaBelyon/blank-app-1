@@ -47,5 +47,3 @@ label = " ❌ Poisonous" if pred == 1 else "✅ Edible"
 # 5) Display
 st.subheader("Prediction Result")
 st.success(f"The mushroom is predicted to be: **{label}**")
-
-
