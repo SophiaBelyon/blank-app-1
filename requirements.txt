@@ -5,4 +5,3 @@ Seaborn
 Matplotlib
 Graphviz
 Scikit-learn
-Pickle
