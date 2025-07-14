@@ -54,8 +54,20 @@ def user_input_features():
 input_df = user_input_features()
 
 # 2) Encode each column (labels are already codes, so transform directly)
-for col in input_df.columns:
-    input_df[col] = label_encoders[col].transform(input_df[col])
+# 2) Encode each column by looking up index in classes_
+# 2) Encode each column (with a fallback for unseen codes)
+encoded = {}
+for col, val in input_df.iloc[0].items():
+    le = label_encoders[col]
+    # DEBUG (optional): print(col, le.classes_)
+    if val in le.classes_:
+        encoded[col] = le.transform([val])[0]
+    else:
+        # fallback to the encoder’s first class (most frequent in training)
+        encoded[col] = le.transform([le.classes_[0]])[0]
+
+input_df = pd.DataFrame([encoded])
+
 
 # 3) Ensure all expected columns are present and filled
 expected = list(model.feature_names_in_)
